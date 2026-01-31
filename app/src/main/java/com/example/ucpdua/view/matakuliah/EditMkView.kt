@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucpdua.view.uicontroller.TopAppBar
-import com.example.ucpdua.viewmodel.EditViewModel
+import com.example.ucpdua.viewmodel.EditBukuVIewModel
 import com.example.ucpdua.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
 
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 fun EditMkView(
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: EditViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: EditBukuVIewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val uiState = viewModel.uiState
     val coroutineScope = rememberCoroutineScope()

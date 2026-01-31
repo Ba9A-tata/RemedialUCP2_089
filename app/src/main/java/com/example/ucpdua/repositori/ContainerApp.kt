@@ -4,8 +4,8 @@ import android.content.Context
 import com.example.ucpdua.room.PerpustakaanDatabase
 
 interface AppContainer {
-    val repositoriMatakuliah: RepositoriMatakuliah
-    val repositoriProgramstudi: RepositoriProgramstudi
+    val repositoriBuku: RepositoriBuku
+    val repositoriPerpustakaan: RepositoriPerpustakaan
 }
 
 class ContainerDataApp(private val context: Context) : AppContainer {
@@ -14,11 +14,11 @@ class ContainerDataApp(private val context: Context) : AppContainer {
         PerpustakaanDatabase.getDatabase(context)
     }
 
-    override val repositoriMatakuliah: RepositoriMatakuliah by lazy {
-        OfflineRepositoriMatakuliah(database.matakuliahDao())
+    override val repositoriBuku: RepositoriBuku by lazy {
+        OfflineRepositoriBuku(database.matakuliahDao())
     }
 
-    override val repositoriProgramstudi: RepositoriProgramstudi by lazy {
-        OfflineRepositoriProgramstudi(database.programStudiDao())
+    override val repositoriPerpustakaan: RepositoriPerpustakaan by lazy {
+        OfflineRepositoriPerpustakaan(database.programStudiDao())
     }
 }

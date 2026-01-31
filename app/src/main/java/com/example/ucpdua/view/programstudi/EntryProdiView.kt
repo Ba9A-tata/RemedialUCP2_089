@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucpdua.view.uicontroller.TopAppBar
-import com.example.ucpdua.viewmodel.EntryViewProgramstudi
+import com.example.ucpdua.viewmodel.EntryPerpustakaanViewModel
 import com.example.ucpdua.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
 
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 fun EntryProdiView(
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: EntryViewProgramstudi = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: EntryPerpustakaanViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val uiState = viewModel.uiState
     val coroutineScope = rememberCoroutineScope()

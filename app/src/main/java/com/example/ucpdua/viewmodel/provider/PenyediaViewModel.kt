@@ -5,11 +5,11 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.ucpdua.MatakuliahApp
-import com.example.ucpdua.viewmodel.DetailViewModel
-import com.example.ucpdua.viewmodel.EditViewModel
-import com.example.ucpdua.viewmodel.EntryViewMatakuliah
-import com.example.ucpdua.viewmodel.EntryViewProgramstudi
+import com.example.ucpdua.PerpustakaanApp
+import com.example.ucpdua.viewmodel.DetailBukuViewModel
+import com.example.ucpdua.viewmodel.EditBukuVIewModel
+import com.example.ucpdua.viewmodel.EntryBukuViewModel
+import com.example.ucpdua.viewmodel.EntryPerpustakaanViewModel
 import com.example.ucpdua.viewmodel.HomeViewModel
 import com.example.ucpdua.viewmodel.DetailProdiViewModel
 
@@ -17,45 +17,45 @@ object PenyediaViewModel {
     val Factory = viewModelFactory {
         initializer {
             HomeViewModel(
-                aplikasiMatakuliah().container.repositoriProgramstudi
+                aplikasiMatakuliah().container.repositoriPerpustakaan
             )
         }
         initializer {
             DetailProdiViewModel(
                 this.createSavedStateHandle(),
-                aplikasiMatakuliah().container.repositoriMatakuliah
+                aplikasiMatakuliah().container.repositoriBuku
             )
         }
 
         initializer {
-            EntryViewProgramstudi(
-                aplikasiMatakuliah().container.repositoriProgramstudi
+            EntryPerpustakaanViewModel(
+                aplikasiMatakuliah().container.repositoriPerpustakaan
             )
         }
 
         initializer {
-            EntryViewMatakuliah(
-                aplikasiMatakuliah().container.repositoriMatakuliah,
-                aplikasiMatakuliah().container.repositoriProgramstudi
+            EntryBukuViewModel(
+                aplikasiMatakuliah().container.repositoriBuku,
+                aplikasiMatakuliah().container.repositoriPerpustakaan
             )
         }
 
         initializer {
-            DetailViewModel(
+            DetailBukuViewModel(
                 this.createSavedStateHandle(),
-                aplikasiMatakuliah().container.repositoriMatakuliah
+                aplikasiMatakuliah().container.repositoriBuku
             )
         }
 
         initializer {
-            EditViewModel(
+            EditBukuVIewModel(
                 this.createSavedStateHandle(),
-                aplikasiMatakuliah().container.repositoriMatakuliah,
-                aplikasiMatakuliah().container.repositoriProgramstudi
+                aplikasiMatakuliah().container.repositoriBuku,
+                aplikasiMatakuliah().container.repositoriPerpustakaan
             )
         }
     }
 }
 
-fun CreationExtras.aplikasiMatakuliah(): MatakuliahApp =
-    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as MatakuliahApp)
+fun CreationExtras.aplikasiMatakuliah(): PerpustakaanApp =
+    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as PerpustakaanApp)

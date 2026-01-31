@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucpdua.room.perpustakaan
-import com.example.ucpdua.viewmodel.EntryViewMatakuliah
+import com.example.ucpdua.viewmodel.EntryBukuViewModel
 import com.example.ucpdua.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
 
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 fun EntryMkView(
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: EntryViewMatakuliah = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: EntryBukuViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val uiState = viewModel.uiState
     val prodiList by viewModel.prodiList.collectAsState(initial = emptyList())

@@ -4,7 +4,7 @@ import com.example.ucpdua.room.perpustakaan
 import com.example.ucpdua.room.PerpustakaanDao
 import kotlinx.coroutines.flow.Flow
 
-interface RepositoriProgramstudi {
+interface RepositoriPerpustakaan {
     fun getAllProgramstudiStream(): Flow<List<perpustakaan>>
     fun getProgramstudiStream(id: String): Flow<perpustakaan?>
     suspend fun insertProgramstudi(perpustakaan: perpustakaan)
@@ -12,9 +12,9 @@ interface RepositoriProgramstudi {
     suspend fun updateProgramstudi(perpustakaan: perpustakaan)
 }
 
-class OfflineRepositoriProgramstudi(
+class OfflineRepositoriPerpustakaan(
     private val perpustakaanDao: PerpustakaanDao
-): RepositoriProgramstudi {
+): RepositoriPerpustakaan {
 
     override fun getAllProgramstudiStream(): Flow<List<perpustakaan>> =
         perpustakaanDao.getAllProgramstudi()

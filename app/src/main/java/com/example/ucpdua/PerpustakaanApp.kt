@@ -4,7 +4,7 @@ import android.app.Application
 import com.example.ucpdua.repositori.AppContainer
 import com.example.ucpdua.repositori.ContainerDataApp
 
-class MatakuliahApp : Application() {
+class PerpustakaanApp : Application() {
     lateinit var container: AppContainer
 
     override fun onCreate() {

@@ -6,13 +6,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ucpdua.repositori.RepositoriProgramstudi
+import com.example.ucpdua.repositori.RepositoriPerpustakaan
 import com.example.ucpdua.room.perpustakaan
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repositoriProgramstudi: RepositoriProgramstudi
+    private val repositoriPerpustakaan: RepositoriPerpustakaan
 ) : ViewModel() {
 
     var searchQuery by mutableStateOf("")
@@ -21,7 +21,7 @@ class HomeViewModel(
     fun updateSearchQuery(query: String) {
         searchQuery = query
     }
-    val homeUiState: StateFlow<HomeUiState> = repositoriProgramstudi.getAllProgramstudiStream()
+    val homeUiState: StateFlow<HomeUiState> = repositoriPerpustakaan.getAllProgramstudiStream()
         .combine(snapshotFlow { searchQuery }) { listProdi, query ->
             val filteredList = if (query.isEmpty()) {
                 listProdi
@@ -40,7 +40,7 @@ class HomeViewModel(
 
     fun deleteProdi(prodi: perpustakaan) {
         viewModelScope.launch {
-            repositoriProgramstudi.deleteProgramstudi(prodi)
+            repositoriPerpustakaan.deleteProgramstudi(prodi)
         }
     }
 }

@@ -13,7 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ucpdua.view.uicontroller.TopAppBar
-import com.example.ucpdua.viewmodel.DetailViewModel
+import com.example.ucpdua.viewmodel.DetailBukuViewModel
 import com.example.ucpdua.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
 
@@ -24,7 +24,7 @@ fun DetailMkView(
     onEditClick: (String) -> Unit,
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: DetailBukuViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val coroutineScope = rememberCoroutineScope()

@@ -3,19 +3,19 @@ package com.example.ucpdua.viewmodel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ucpdua.repositori.RepositoriMatakuliah
+import com.example.ucpdua.repositori.RepositoriBuku
 import com.example.ucpdua.view.route.DestinasiDetailMatakuliah
 import kotlinx.coroutines.flow.*
 
-class DetailViewModel(
+class DetailBukuViewModel(
     savedStateHandle: SavedStateHandle,
-    private val repositoriMatakuliah: RepositoriMatakuliah
+    private val repositoriBuku: RepositoriBuku
 ) : ViewModel() {
 
     private val nim: String = checkNotNull(savedStateHandle[DestinasiDetailMatakuliah.NIM])
 
     val uiState: StateFlow<DetailUiState> =
-        repositoriMatakuliah.getMatakuliahStream(nim)
+        repositoriBuku.getMatakuliahStream(nim)
             .filterNotNull()
             .map { DetailUiState(detailMk = it.toMkUiState()) }
             .stateIn(
@@ -25,8 +25,8 @@ class DetailViewModel(
             )
 
     suspend fun deleteMk() {
-        repositoriMatakuliah.getMatakuliahStream(nim).firstOrNull()?.let {
-            repositoriMatakuliah.deleteMatakuliah(it)
+        repositoriBuku.getMatakuliahStream(nim).firstOrNull()?.let {
+            repositoriBuku.deleteMatakuliah(it)
         }
     }
 }

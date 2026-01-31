@@ -4,11 +4,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.ucpdua.repositori.RepositoriProgramstudi
+import com.example.ucpdua.repositori.RepositoriPerpustakaan
 import com.example.ucpdua.room.perpustakaan
 
-class EntryViewProgramstudi(
-    private val repositoriProgramstudi: RepositoriProgramstudi
+class EntryPerpustakaanViewModel(
+    private val repositoriPerpustakaan: RepositoriPerpustakaan
 ) : ViewModel() {
 
     var uiState by mutableStateOf(PstUiState())
@@ -20,7 +20,7 @@ class EntryViewProgramstudi(
 
     suspend fun saveProdi() {
         if (validateFields()) {
-            repositoriProgramstudi.insertProgramstudi(uiState.toPstEntity())
+            repositoriPerpustakaan.insertProgramstudi(uiState.toPstEntity())
         }
     }
 

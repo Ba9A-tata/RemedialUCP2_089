@@ -4,7 +4,7 @@ import com.example.ucpdua.room.Buku
 import com.example.ucpdua.room.BukuDao
 import kotlinx.coroutines.flow.Flow
 
-interface RepositoriMatakuliah {
+interface RepositoriBuku {
     fun getAllMatakuliahStream(): Flow<List<Buku>>
 
     fun getMatakuliahByProdiStream(namaProdi: String): Flow<List<Buku>>
@@ -19,9 +19,9 @@ interface RepositoriMatakuliah {
     suspend fun updateMatakuliah(buku: Buku)
 }
 
-class OfflineRepositoriMatakuliah(
+class OfflineRepositoriBuku(
     private val bukuDao: BukuDao
-) : RepositoriMatakuliah {
+) : RepositoriBuku {
 
     override fun getAllMatakuliahStream(): Flow<List<Buku>> =
         bukuDao.getAllMatakuliah()
